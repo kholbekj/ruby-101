@@ -15,6 +15,7 @@
       }
       .remark-code, .remark-inline-code { font-family: 'Ubuntu Mono'; }
     </style>
+		<link rel="stylesheet" href="theme.css">
   </head>
   <body>
     <textarea id="source">
@@ -323,24 +324,30 @@ and then execute the file with ruby:
 
 `ruby first_program.rb`
 ---
-## Beginner challenge
-The pet database asks for pet information, and lists the pets already stored.
+## Challenge
+
+Write a program which countinuously asks for results of dodgeball matches, and keeps track of team statistics.
 The following could be an interaction with the program (`>` means user input):
 ```bash
-ruby pet_database.rb
-Welcome to the pet database!
-Enter pet kind: >Giraffe
-Enter pet name: >Marius
-Enter pet age: >47
-Pet succesfully added! You have the following pets:
+ruby match_tracker.rb
+Enter winning team name: >Poland
+Enter losing team name: >Germany
+Match registered! So far the score is:
 
-Marius the Giraffe, age 47
+Poland
+-----
+1 Matches won
+0 Match lost
 
-Enter pet kind:
-(...)
+Germany
+-----
+0 Matches won
+1 Match lost
 ```
+
 ---
-## Experienced Challenge:
+## Bonus Challenge
+
 Write a program which countinuously asks for results of dodgeball matches, and keeps track of team statistics.
 The following could be an interaction with the program (`>` means user input):
 ```bash
@@ -422,7 +429,9 @@ class: center, middle
     <script src="https://gnab.github.io/remark/downloads/remark-latest.min.js">
     </script>
     <script>
-      var slideshow = remark.create();
+      var slideshow = remark.create({
+        highlightStyle: 'tomorrow'
+      });
     </script>
   </body>
 </html>
