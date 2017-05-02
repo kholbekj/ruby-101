@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Title</title>
+    <meta charset="utf-8">
+    <style>
+      @import url(https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz);
+      @import url(https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic);
+      @import url(https://fonts.googleapis.com/css?family=Ubuntu+Mono:400,700,400italic);
+
+      body { font-family: 'Droid Serif'; }
+      h1, h2, h3 {
+        font-family: 'Yanone Kaffeesatz';
+        font-weight: normal;
+      }
+      .remark-code, .remark-inline-code { font-family: 'Ubuntu Mono'; }
+    </style>
+  </head>
+  <body>
+    <textarea id="source">
+
+class: center, middle
+
+# Managing XSS
+An overview of impact and countermeassures
+
+---
+class: center, middle
+
+# What are XSS attacks
+Injection of malicious html into other users browsers.
+
+---
+![](form_html.png)
+---
+![](success_html.png)
+---
+
+# How serious are XSS attacks?
+
+* Intercept forms to steal data
+* Cross Site Request Forging (CSRF)
+* nap tokens
+* Screenshot the browser
+* In some cases even capture webcam
+* Phishing
+
+http://www.xss-payloads.com/payloads.html
+
+---
+
+# The kinds of XSS
+
+* ### Persisted XSS (usually a DB field)
+* ### Reflected XSS (the script is injected fromt the request)
+* ### DOM-based XSS (sneakier version of Reflected)
+
+---
+
+# What are the safeguards?
+
+* Rails does a lot of the work for us.
+* Moderne browsers has Content-Security-Policy(CSP) enforcement
+* Browsers implement a header (that we sent) which blocks page execution in some XSS cases
+
+---
+
+# So why are we even talking about it
+
+* Human error can break rails security `.html_safe`, `.raw`
+* We have JS that modifies the DOM, which requires explicit escaping.
+* We render in more contexts than we think about.
+
+---
+
+# Blind persisted XSS
+* Analytics and related tools
+* Admin backends
+* BI tools
+* Data aggregators
+* Job monitoring
+
+
+---
+class: center, middle
+
+# Introducing Sleepy Puppy
+by Netflix™®
+![](https://camo.githubusercontent.com/242c351f05449c27a960e796100876bedb13a0a0/687474703a2f2f692e696d6775722e636f6d2f636e676a537a622e6a7067)
+
+"Sleepy Puppy is a cross-site scripting (XSS) payload management framework which simplifies the ability to capture, manage, and track XSS propagation over long periods of time."
+
+---
+
+# What would it take to feel safe?
+
+* Regularly polute our DB with tracked payloads
+* Review our CSP, and block inline JS execution
+* Review our rails known risks (brakeman)
+
+---
+class: center, middle
+
+# Thanks for your attention!
+
+
+
+    </textarea>
+    <script src="https://gnab.github.io/remark/downloads/remark-latest.min.js">
+    </script>
+    <script>
+      var slideshow = remark.create();
+    </script>
+  </body>
+</html>
