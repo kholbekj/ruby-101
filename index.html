@@ -31,6 +31,8 @@ class: center, middle
 * Interpreted
 * Garbage collected
 * Completely Object Oriented
+* Dynamic
+* Open source
 
 ---
 ## Syntax Crash Course
@@ -188,7 +190,7 @@ class Fish < Animal # Fish is a subclass of Animal
     @kind = kind # variables starting with @ are instance variables
   end
 
-  def breed(other_fish) # fish has it's own rules for breeding
+  def breed(other_fish) # fish has its own rules for breeding
     return unless other_fish.is_a?(Fish)
     Fish.new([self.kind, other_fish.kind].sample) # randomly pick a parent type
   end
@@ -223,7 +225,7 @@ baby_fish.introduce_yourself # "I'm a fish, I come from Earth"
 * will first check if the Fish class has this method, but it does not
 * will then check if the parent class has it, and it does.
 
-`baby_fish.this_mehtod_is_not_there`
+`baby_fish.this_method_is_not_there`
 
 * will check fish, and all it's superclasses with no luck
 * will then check fish for a special method called `method_missing`
@@ -250,7 +252,7 @@ end
 # We can access elements with square brackets
 more_things[1] # "buzz" (0-indexed)
 
-# We have hashes (other languages calls them ditcs, hashmaps, etc.)
+# We have hashes (other languages calls them dicts, hashmaps, etc.)
 pets = {'dog' => 'Fluffy', 'cat' => 'Princess Sprinkles'}
 pets.keys # ['dog', 'cat']
 pets.values # ["Fluffy", "Princess Sprinkles"]
@@ -296,7 +298,7 @@ end
   # this block takes an argument, and makes it available as `number`
 end
 
-[1, 2, 3, 4, 5].map {|element| element.even?} # [false, true, flase, true, false]
+[1, 2, 3, 4, 5].map {|element| element.even?} # [false, true, false, true, false]
 
 # We can define a method that accepts a block like this
 def powerful_method
@@ -402,6 +404,10 @@ eval('1 + 2')
 
 ---
 # Resources
+
+http://ruby-doc.org/
+
+Here you can find documentation about the language
 
 http://rubykoans.com/
 
